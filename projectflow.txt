@@ -1,0 +1,4 @@
+1 Create the project template by executing the template.py file\\
+2 Creates the virtual envirements
+3 Do pip Install requirements.txt install the depedeies
+

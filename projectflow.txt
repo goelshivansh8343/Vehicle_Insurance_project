@@ -2,3 +2,10 @@
 2 Creates the virtual envirements
 3 Do pip Install requirements.txt install the depedeies
 
+4 Creat a folder notebookd ans made the mongo_db_setup.ipynb and push the data on the mongodb despite of 
+fecting the data from local
+
+Implementing the logging ,exception and notebooks
+5 write a loggerfile test on demo.py
+6 write a exception file test it on the demo.py
+7 Eda notebook added

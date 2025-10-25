@@ -8,4 +8,6 @@ fecting the data from local
 Implementing the logging ,exception and notebooks
 5 write a loggerfile test on demo.py
 6 write a exception file test it on the demo.py
-7 Eda notebook added
+7 Eda notebook added 
+8 Eda Completely succesfully
+

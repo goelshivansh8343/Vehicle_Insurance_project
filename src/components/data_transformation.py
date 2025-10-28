@@ -12,11 +12,11 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
 from imblearn.combine import SMOTEENN
-from src.entity.artifact_entity import DataTranformationArtifact
+from src.entity.artifact_entity import DataTransformationArtifact
 
 class DataTransformation:
-    def __init__(self,data_tranformation_config,data_validation_artifact,data_ingestion_artifact):
-        self.data_tranformation_config=data_tranformation_config
+    def __init__(self,data_transformation_config,data_validation_artifact,data_ingestion_artifact):
+        self.data_transformation_config=data_transformation_config
         self.data_validation_artifact=data_validation_artifact
         self.data_ingestion_artifact=data_ingestion_artifact
         self._shema_config=read_yaml_file(SCHEMA_FILE_PATH)
@@ -102,9 +102,9 @@ class DataTransformation:
 
 
 
-    def initiate_data_tranformation(self):
+    def initiate_data_transformation(self):
         try:
-            logging.info("Data_Tranformation_Started")
+            logging.info("Data_Transformation_Started")
             if self.data_validation_artifact.validationStatus==False:
                 raise Exception(self.data_validation_artifact.message)
             
@@ -165,15 +165,15 @@ class DataTransformation:
             test_arr=np.c_[input_feature_test_final,np.array(target_feature_test_final)]
             logging.info("Feature Target Consction Done")
 
-            save_object(self.data_tranformation_config.transformed_object_file_path,preprocessor)
-            save_numpy_array_data(self.data_tranformation_config.tranformed_train_file_path,train_arr)
-            save_numpy_array_data(self.data_tranformation_config.tranformed_test_file_path,test_arr)
+            save_object(self.data_transformation_config.transformed_object_file_path,preprocessor)
+            save_numpy_array_data(self.data_transformation_config.transformed_train_file_path,train_arr)
+            save_numpy_array_data(self.data_transformation_config.transformed_test_file_path,test_arr)
 
 
-            logging.info("Saving Tranformation objext Saved")
-            logging.info("Data Tranformation completeflt implelemted")
+            logging.info("Saving Transformation objext Saved")
+            logging.info("Data Transformation completeflt implelemted")
 
-            return DataTranformationArtifact(self.data_tranformation_config.transformed_object_file_path,self.data_tranformation_config.tranformed_train_file_path,self.data_tranformation_config.tranformed_test_file_path)
+            return DataTransformationArtifact(self.data_transformation_config.transformed_object_file_path,self.data_transformation_config.transformed_train_file_path,self.data_transformation_config.transformed_test_file_path)
 
 
 

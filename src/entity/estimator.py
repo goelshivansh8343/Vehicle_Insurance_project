@@ -10,4 +10,7 @@ class My_Model:
     def __init__(self,preprocessor_object,trained_model_object):
         self.preprocessor=preprocessor_object
         self.trained_model=trained_model_object
+
+
+        
         

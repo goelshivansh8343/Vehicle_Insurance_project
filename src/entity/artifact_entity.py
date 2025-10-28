@@ -1,7 +1,19 @@
+import pickle
+import os
 class DataIngestionArtifact:
     def __init__(self, trained_file_path: str, test_file_path: str):
         self.trained_file_path = trained_file_path
         self.test_file_path = test_file_path
+    @staticmethod
+    def save(self, file_path: str):
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, 'wb') as f:
+            pickle.dump(self, f)
+
+    @staticmethod
+    def load(file_path: str):
+        with open(file_path, 'rb') as f:
+            return pickle.load(f)
         
 
 class DataValidationArtifact:
@@ -11,11 +23,11 @@ class DataValidationArtifact:
         self.validation_report=validationreport
 
 
-class DataTranformationArtifact:
-    def __init__(self,tranformed_object_path,tranformed_train_path,tranformed_test_path):
-        self.tranformed_object_path=tranformed_object_path
-        self.tranformed_train_path=tranformed_train_path
-        self.tranformed_test_path=tranformed_test_path
+class DataTransformationArtifact:
+    def __init__(self,transformed_object_path,transformed_train_path,transformed_test_path):
+        self.transformed_object_path=transformed_object_path
+        self.transformed_train_path=transformed_train_path
+        self.transformed_test_path=transformed_test_path
 
 
 class MetricArtifact:

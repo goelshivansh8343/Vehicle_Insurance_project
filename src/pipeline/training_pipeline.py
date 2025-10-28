@@ -6,7 +6,7 @@ from src.entity.config_entity import DataIngestionConfig
 from src.components.data_ingestion import DataIngestion
 from src.entity.config_entity import DataValidationConfig
 from src.components.data_validation import DataValidation
-from src.entity.config_entity import DataTranformationConfig
+from src.entity.config_entity import DataTransformationConfig
 from src.components.data_transformation import DataTransformation
 from src.entity.config_entity import ModelTrainerConfig
 from src.components.model_trainer import ModelTrainer
@@ -16,7 +16,7 @@ class TrainingPipeline:
     def __init__(self):
         self.data_ingestion_config=DataIngestionConfig()
         self.data_validation_config=DataValidationConfig()
-        self.data_tranformation_config=DataTranformationConfig()
+        self.data_transformation_config=DataTransformationConfig()
         self.data_model_trainer_config=ModelTrainerConfig()
 
 
@@ -59,15 +59,15 @@ class TrainingPipeline:
             raise MyException(e,sys)
         
 
-    def start_Data_tranformation(self,data_validation_artifact,data_ingestion_artifact):
+    def start_Data_transformation(self,data_validation_artifact,data_ingestion_artifact):
         try:
-            logging.info("Entered into the Data_Tranformation_step")
-            data_tranformation=DataTransformation(self.data_tranformation_config,data_validation_artifact,data_ingestion_artifact)
-            data_tranformation_artifact=data_tranformation.initiate_data_tranformation()
-            logging.info("Performed the Data  tranformation operation")
-            logging.info("Exited from thr data_tranformation_method")
+            logging.info("Entered into the Data_Transformation_step")
+            data_transformation=DataTransformation(self.data_transformation_config,data_validation_artifact,data_ingestion_artifact)
+            data_transformation_artifact=data_transformation.initiate_data_transformation()
+            logging.info("Performed the Data  transformation operation")
+            logging.info("Exited from thr data_transformation_method")
 
-            return data_tranformation_artifact
+            return data_transformation_artifact
         except Exception as e:
             raise MyException(e,sys)
         
@@ -91,14 +91,5 @@ class TrainingPipeline:
 
 
 
-    def run_pipeline(self):
-        try:
-            data_ingestion_artifact=self.start_Data_ingestion()
-            data_validation_artifact=self.start_Data_validation(data_ingestion_artifact)
-            data_tranformation_artifact=self.start_Data_tranformation(data_validation_artifact,data_ingestion_artifact)
-            model_trainer_artifact=self.start_model_trainer(data_tranformation_artifact)
 
-        except Exception as e:
-            raise MyException(e,sys)
-        
 

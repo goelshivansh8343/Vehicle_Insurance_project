@@ -114,7 +114,7 @@ class DataValidation:
 
 
             logging.info("Data validation artifact created and saved to JSON file.")
-            logging.info(f"Data validation artifact: {data_validation_artifact}")
+            logging.info(f"Data validation artifact Sucesfully: {data_validation_artifact}")
             return data_validation_artifact
         
         except Exception as e:

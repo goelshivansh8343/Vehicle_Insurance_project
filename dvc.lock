@@ -25,3 +25,28 @@ stages:
       md5: 853f754b5fc85a6f5f77dcce663c8682.dir
       size: 87253726
       nfiles: 3
+  data_validation:
+    cmd: python src/stage_02_data_validation.py
+    deps:
+    - path: src/components/data_validation.py
+      hash: md5
+      md5: 500c66d4482b6df2fa6484dd684efbf6
+      size: 4661
+    - path: src/entity/config_entity.py
+      hash: md5
+      md5: 5c2d8143b96ea3496e56f2e4b0ba4f32
+      size: 2622
+    - path: src/pipeline/training_pipeline.py
+      hash: md5
+      md5: 8ede8dff2b7eafa8100439aee5eeca1e
+      size: 3652
+    outs:
+    - path: artifact/artifact_objects/data_validation.pkl
+      hash: md5
+      md5: 1688ccc5e8e2698c3b5b2510786f3c60
+      size: 168
+    - path: artifact/data_validation
+      hash: md5
+      md5: 6f293f999c3d4d188cacdf10b48c0135.dir
+      size: 55
+      nfiles: 1

@@ -10,7 +10,7 @@ from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score
 from src.constants import *
 from src.entity.artifact_entity import MetricArtifact,ModelTrainerArtifact
 from src.entity.estimator import My_Model;
-
+import joblib;
 
 class ModelTrainer:
     def __init__(self,data_transformation_artifact,model_trainer_config):
@@ -21,6 +21,7 @@ class ModelTrainer:
         try:
             logging.info("Training with the random_forest with the specified parameters")
             x_train,y_train,x_test,y_test=trainarr[:,:-1],trainarr[:,-1],testarr[:,:-1],testarr[:,-1]
+            print(x_train.shape," ",y_train.shape)
             logging.info("TrainTest Split Done")
             model=RandomForestClassifier(
                 n_estimators=MODEL_TRAINER_N_ESTIMATORS,
@@ -32,6 +33,7 @@ class ModelTrainer:
             logging.info("Model Traingng Goinf on")
             model.fit(x_train,y_train)
             logging.info("Model_Trained_Succesfully")
+            joblib.dump(model,"artifact/artifact_objects/model.pkl")
 
             y_pred=model.predict(x_test)
             accuracy=accuracy_score(y_test,y_pred)

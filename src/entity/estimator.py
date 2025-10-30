@@ -11,6 +11,14 @@ class My_Model:
         self.preprocessor=preprocessor_object
         self.trained_model=trained_model_object
 
+    def predict(self,dataframe):
+        try:
+            logging.info("Started the Prediction process")
+            tranformed_feature=self.preprocessor.transform(dataframe)
+            return self.trained_model.predict(tranformed_feature)
+        except Exception as e:
+            raise MyException(e,sys)
+
 
         
         

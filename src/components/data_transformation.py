@@ -13,6 +13,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
 from imblearn.combine import SMOTEENN
 from src.entity.artifact_entity import DataTransformationArtifact
+import joblib
 
 class DataTransformation:
     def __init__(self,data_transformation_config,data_validation_artifact,data_ingestion_artifact):
@@ -149,11 +150,47 @@ class DataTransformation:
             preprocessor=self.get_data_transformer_object()
             logging.info("We got the preprocessor onhect")
             print("Columns in train dataframe:", input_feature_traindf.columns.tolist())
+            print("The values in the array is given by the ")
+            print(input_feature_traindf.head())
+            print(input_feature_traindf["Gender"])
+            print(input_feature_traindf["Age"])
+            print(input_feature_traindf["Driving_License"])
+            print(input_feature_traindf["Region_Code"])
+            print(input_feature_traindf["Previously_Insured"])
+            print(input_feature_traindf["Vehicle_Damage"])
+            print(input_feature_traindf["Annual_Premium"])
+            print(input_feature_traindf["Policy_Sales_Channel"])
+            print(input_feature_traindf["Vintage"])
+            print(input_feature_traindf["< 1 Year"])
+            print(input_feature_traindf["> 2 Years"])
+            
+
+
 
             logging.info("Initializing for the Traing data")
             input_feature_train_arr=preprocessor.fit_transform(input_feature_traindf)
             input_feature_test_arr=preprocessor.fit_transform(input_feature_testdf)
             logging.info("Tranformation done end to end")
+            # Get transformed column names
+            columns = ['Gender', 'Age', 'Driving_License', 'Region_Code', 'Previously_Insured',
+            'Vehicle_Damage', 'Annual_Premium', 'Policy_Sales_Channel', 'Vintage',
+            '< 1 Year', '> 2 Years']
+
+            values = [[1, 35, 1, 28.0, 0, 1, 35000.0, 152.0, 120, True, False]]
+
+            input_df = pd.DataFrame(values, columns=columns)
+            print("Akhil")
+            print(input_df)
+            logging.info("Checking Preprocessing")
+            try:
+                preprocessor.fit_transform(input_df)
+            except Exception as e:
+                raise MyException(e,sys)
+            
+
+            joblib.dump(preprocessor,"artifact/artifact_objects/preprocessor.pkl")
+
+
 
             logging.info("Applying the Smooting techinqueue")
             smt=SMOTEENN(sampling_strategy='minority')
@@ -163,6 +200,7 @@ class DataTransformation:
 
             train_arr=np.c_[input_feature_train_final,np.array(target_feature_train_final)]
             test_arr=np.c_[input_feature_test_final,np.array(target_feature_test_final)]
+            
             logging.info("Feature Target Consction Done")
 
             save_object(self.data_transformation_config.transformed_object_file_path,preprocessor)

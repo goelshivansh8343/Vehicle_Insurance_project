@@ -5,8 +5,8 @@ stages:
     deps:
     - path: src/components/data_ingestion.py
       hash: md5
-      md5: 4981c672e4cbc4a1ff7e9d2ec5c084e6
-      size: 3354
+      md5: c5120400414931a34da0dcf2a54e0ba0
+      size: 3374
     - path: src/entity/config_entity.py
       hash: md5
       md5: 5c2d8143b96ea3496e56f2e4b0ba4f32
@@ -22,81 +22,6 @@ stages:
       size: 201
     - path: artifact/data_ingestion
       hash: md5
-      md5: 299a1843ca983d29c222da1e774237c8.dir
+      md5: 853f754b5fc85a6f5f77dcce663c8682.dir
       size: 87253726
       nfiles: 3
-  data_validation:
-    cmd: python src/stage_02_data_validation.py
-    deps:
-    - path: src/components/data_validation.py
-      hash: md5
-      md5: f024ebbbf69016137bb1021804fbc65e
-      size: 4650
-    - path: src/entity/config_entity.py
-      hash: md5
-      md5: 5c2d8143b96ea3496e56f2e4b0ba4f32
-      size: 2622
-    - path: src/pipeline/training_pipeline.py
-      hash: md5
-      md5: 8ede8dff2b7eafa8100439aee5eeca1e
-      size: 3652
-    outs:
-    - path: artifact/artifact_objects/data_validation.pkl
-      hash: md5
-      md5: 1688ccc5e8e2698c3b5b2510786f3c60
-      size: 168
-    - path: artifact/data_validation
-      hash: md5
-      md5: 6f293f999c3d4d188cacdf10b48c0135.dir
-      size: 55
-      nfiles: 1
-  data_transformation:
-    cmd: python src/stage_03_data_transformation.py
-    deps:
-    - path: src/components/data_transformation.py
-      hash: md5
-      md5: 05f5d482450e009f7ebc3bdf9c7b92b9
-      size: 7672
-    - path: src/entity/config_entity.py
-      hash: md5
-      md5: 5c2d8143b96ea3496e56f2e4b0ba4f32
-      size: 2622
-    - path: src/pipeline/training_pipeline.py
-      hash: md5
-      md5: 8ede8dff2b7eafa8100439aee5eeca1e
-      size: 3652
-    outs:
-    - path: artifact/artifact_objects/data_transformation.pkl
-      hash: md5
-      md5: 0187b80061d71ab9752f6728e3514c71
-      size: 328
-    - path: artifact/data_transformation
-      hash: md5
-      md5: f9ebaee923dbc335a654d847ce1599d6.dir
-      size: 108036734
-      nfiles: 3
-  model_trainer:
-    cmd: python src/stage_04_model_trainer.py
-    deps:
-    - path: src/components/model_trainer.py
-      hash: md5
-      md5: 8689491bee027e331934d72bcefadbe9
-      size: 3606
-    - path: src/entity/config_entity.py
-      hash: md5
-      md5: 5c2d8143b96ea3496e56f2e4b0ba4f32
-      size: 2622
-    - path: src/pipeline/training_pipeline.py
-      hash: md5
-      md5: 8ede8dff2b7eafa8100439aee5eeca1e
-      size: 3652
-    outs:
-    - path: artifact/artifact_objects/model_trainer.pkl
-      hash: md5
-      md5: 959083a82d505af5b8b00a68a2d37fb7
-      size: 262
-    - path: artifact/model_trainer
-      hash: md5
-      md5: 5b72ebcab30a7749f6830f25e9aefa2d.dir
-      size: 12085205
-      nfiles: 2

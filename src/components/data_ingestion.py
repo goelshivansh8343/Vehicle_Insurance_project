@@ -56,7 +56,7 @@ class DataIngestion:
         
 
     def initiate_data_ingestion(self)->DataIngestionArtifact:
-        logging.info("Entered_initiate in the data_ingestion_project")
+        logging.info("Entered_initiate inthe data_ingestion_project")
         try:
             dataframe=self.export_data_into_feature_store()
             logging.info("Got the data from the mongodb")
@@ -64,7 +64,7 @@ class DataIngestion:
             logging.info("Performed the train_test_split")
             logging.info("Exiceted from the data_ingestion_part")
             Data_ingestion_artifact=DataIngestionArtifact(self.data_ingestion_config.training_file_path,self.data_ingestion_config.testing_file_path)
-            logging.info("Artifact saved at the DATAIngestionArtifcet")
+            logging.info("Artifact saved at the DATAIngestionArtifcet ans succesfully Done")
             return Data_ingestion_artifact
         except Exception as e:
             raise MyException(e,sys)

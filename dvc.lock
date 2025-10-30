@@ -50,3 +50,28 @@ stages:
       md5: 6f293f999c3d4d188cacdf10b48c0135.dir
       size: 55
       nfiles: 1
+  data_transformation:
+    cmd: python src/stage_03_data_transformation.py
+    deps:
+    - path: src/components/data_transformation.py
+      hash: md5
+      md5: e2f3819417ff33f8e574fc31acf92b40
+      size: 8026
+    - path: src/entity/config_entity.py
+      hash: md5
+      md5: 5c2d8143b96ea3496e56f2e4b0ba4f32
+      size: 2622
+    - path: src/pipeline/training_pipeline.py
+      hash: md5
+      md5: 8ede8dff2b7eafa8100439aee5eeca1e
+      size: 3652
+    outs:
+    - path: artifact/artifact_objects/data_transformation.pkl
+      hash: md5
+      md5: 0187b80061d71ab9752f6728e3514c71
+      size: 328
+    - path: artifact/data_transformation
+      hash: md5
+      md5: 0f8d6e72983d7617370bd5f65c08eeb8.dir
+      size: 108029534
+      nfiles: 3

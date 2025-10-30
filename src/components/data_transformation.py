@@ -149,20 +149,7 @@ class DataTransformation:
 
             preprocessor=self.get_data_transformer_object()
             logging.info("We got the preprocessor onhect")
-            print("Columns in train dataframe:", input_feature_traindf.columns.tolist())
-            print("The values in the array is given by the ")
-            print(input_feature_traindf.head())
-            print(input_feature_traindf["Gender"])
-            print(input_feature_traindf["Age"])
-            print(input_feature_traindf["Driving_License"])
-            print(input_feature_traindf["Region_Code"])
-            print(input_feature_traindf["Previously_Insured"])
-            print(input_feature_traindf["Vehicle_Damage"])
-            print(input_feature_traindf["Annual_Premium"])
-            print(input_feature_traindf["Policy_Sales_Channel"])
-            print(input_feature_traindf["Vintage"])
-            print(input_feature_traindf["< 1 Year"])
-            print(input_feature_traindf["> 2 Years"])
+            
             
 
 
@@ -176,16 +163,7 @@ class DataTransformation:
             'Vehicle_Damage', 'Annual_Premium', 'Policy_Sales_Channel', 'Vintage',
             '< 1 Year', '> 2 Years']
 
-            values = [[1, 35, 1, 28.0, 0, 1, 35000.0, 152.0, 120, True, False]]
-
-            input_df = pd.DataFrame(values, columns=columns)
-            print("Akhil")
-            print(input_df)
-            logging.info("Checking Preprocessing")
-            try:
-                preprocessor.fit_transform(input_df)
-            except Exception as e:
-                raise MyException(e,sys)
+            
             
 
             joblib.dump(preprocessor,"artifact/artifact_objects/preprocessor.pkl")

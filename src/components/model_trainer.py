@@ -78,6 +78,7 @@ class ModelTrainer:
 
             with open(self.model_trainer_config.trained_model_metrics,'w') as file:
                 json.dump(metric_report,file,indent=4)
+            logging.info("Model Trained Succesfully")
             return model_trainer_artifact
 
             

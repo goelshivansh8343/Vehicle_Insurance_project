@@ -75,3 +75,28 @@ stages:
       md5: 0f8d6e72983d7617370bd5f65c08eeb8.dir
       size: 108029534
       nfiles: 3
+  model_trainer:
+    cmd: python src/stage_04_model_trainer.py
+    deps:
+    - path: src/components/model_trainer.py
+      hash: md5
+      md5: d73681895e5e0aedf8e06267f23e4bdb
+      size: 3797
+    - path: src/entity/config_entity.py
+      hash: md5
+      md5: 5c2d8143b96ea3496e56f2e4b0ba4f32
+      size: 2622
+    - path: src/pipeline/training_pipeline.py
+      hash: md5
+      md5: 8ede8dff2b7eafa8100439aee5eeca1e
+      size: 3652
+    outs:
+    - path: artifact/artifact_objects/model_trainer.pkl
+      hash: md5
+      md5: 0a0b92631ef3f2942475d5517af6810d
+      size: 262
+    - path: artifact/model_trainer
+      hash: md5
+      md5: 72cc33816cc52d21167a5bf0286f5bfe.dir
+      size: 12247667
+      nfiles: 2

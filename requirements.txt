@@ -12,9 +12,10 @@ certifi
 PyYAML
 boto3
 mypy-boto3-s3
-botocare
+# botocare
 fastapi
 python-multipart
 uvicorn
 jinja2
-imblear
+imblearn
+streamlit
